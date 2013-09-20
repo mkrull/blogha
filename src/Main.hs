@@ -46,7 +46,7 @@ getHomeR = defaultLayout $ do
     addScriptRemote "//rawgithub.com/mkrull/yesod-ember-skel/master/static/js/App.js"
     addScriptRemote "//rawgithub.com/mkrull/yesod-ember-skel/master/static/js/libs/bs-3.0/bootstrap.min.js"
     $(widgetFile "home")
-    
+
 main :: IO ()
 main = do
     pool <- createSqlitePool "database.sqlite" 10 -- create a new pool
