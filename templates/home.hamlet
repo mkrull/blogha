@@ -1,0 +1,17 @@
+<script type="text/x-handlebars" id="about">
+    <div class="about"><p>About</p>
+
+<script type="text/x-handlebars" id="posts">
+    <div class="about"><p>Posts</p> 
+
+<script type="text/x-handlebars">
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="collapse navbar-collapse">
+            <a class="navbar-brand" href="#">Uninets
+            <ul class="nav navbar-nav">
+                <li>
+                    {{#link-to 'posts'}}Posts{{/link-to}}
+                <li>
+                    {{#link-to 'about'}}About{{/link-to}}
+
+    {{outlet}}

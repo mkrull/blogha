@@ -1,4 +1,11 @@
 extensions:
+  TemplateHaskell: true
+  MultiParamTypeClasses: true
+  DeriveDataTypeable: true
+  TypeFamilies: true
+  QuasiQuotes: true
+  GADTs: true
+  FlexibleContexts: true
   OverloadedStrings: true
 cabal-file: project.cabal
 extra-packages: ''
@@ -8,4 +15,8 @@ module-template: ! 'module MODULE_NAME where
 
 '
 ghc-args: []
-modules: {}
+modules:
+  Main(src/Main.hs):
+    filename: src/Main.hs
+  Import:
+    filename: src/Import.hs
