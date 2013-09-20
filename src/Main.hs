@@ -5,13 +5,11 @@ import Yesod
 -- widgetFile must be imported
 import Import
 
-import Data.Text (Text)
 import Database.Persist.Quasi (lowerCaseSettings)
 import Database.Persist.Sqlite
     ( ConnectionPool, SqlPersistT, runSqlPool, runMigration
     , createSqlitePool, runSqlPersistMPool
     )
-import Data.Time (UTCTime, getCurrentTime)
 import Network.HTTP.Conduit (Manager, newManager, def)
 
 share [mkPersist sqlOnlySettings, mkMigrate "migrateAll"] $(persistFileWith lowerCaseSettings "config/models")
