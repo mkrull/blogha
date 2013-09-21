@@ -16,7 +16,9 @@ module-template: ! 'module MODULE_NAME where
 '
 ghc-args: []
 modules:
+  Init:
+    filename: src/Init.hs
   Main(src/Main.hs):
     filename: src/Main.hs
-  Import:
-    filename: src/Import.hs
+  Handler.Home:
+    filename: src/Handler/Home.hs

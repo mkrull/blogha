@@ -7,7 +7,7 @@
 <script type="text/x-handlebars">
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="collapse navbar-collapse">
-            <a class="navbar-brand" href="#">Uninets
+            <a class="navbar-brand" href="#">SomeBlog
             <ul class="nav navbar-nav">
                 <li>
                     {{#link-to 'posts'}}Posts{{/link-to}}

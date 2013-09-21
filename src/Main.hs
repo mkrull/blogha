@@ -1,49 +1,12 @@
 module Main where
 
-import Yesod
+-- initialized
+import Init
 
--- widgetFile must be imported
-import Import
+-- Handlers
+import Handler.Home
 
-import Database.Persist.Quasi (lowerCaseSettings)
-import Database.Persist.Sqlite
-    ( ConnectionPool, SqlPersistT, runSqlPool, runMigration
-    , createSqlitePool, runSqlPersistMPool
-    )
-import Network.HTTP.Conduit (Manager, newManager, def)
-
-share [mkPersist sqlOnlySettings, mkMigrate "migrateAll"] $(persistFileWith lowerCaseSettings "config/models")
-
-data Ember = Ember
-   { connPool    :: ConnectionPool
-   , httpManager :: Manager
-   }
-
-instance Yesod Ember
-
-instance YesodPersist Ember where
-   type YesodPersistBackend Ember = SqlPersistT
-   runDB f = do
-       master <- getYesod
-       let pool = connPool master
-       runSqlPool f pool
-       
-mkYesod "Ember" $(parseRoutesFile "config/routes")
-
-getHomeR :: Handler Html
-getHomeR = defaultLayout $ do
-    setTitle "Uninets"
-    
-    -- change src URIs in production
-    addStylesheetRemote "//rawgithub.com/mkrull/yesod-ember-skel/master/static/css/normalize.css"
-    addStylesheetRemote "//rawgithub.com/mkrull/yesod-ember-skel/master/static/css/bs-3.0/bootstrap.min.css"
-    addStylesheetRemote "//rawgithub.com/mkrull/yesod-ember-skel/master/static/css/style.css"
-    addScriptRemote "//rawgithub.com/mkrull/yesod-ember-skel/master/static/js/libs/jquery-1.9.1.js"
-    addScriptRemote "//rawgithub.com/mkrull/yesod-ember-skel/master/static/js/libs/handlebars-1.0.0.js"
-    addScriptRemote "//rawgithub.com/mkrull/yesod-ember-skel/master/static/js/libs/ember-1.0.0.js"
-    addScriptRemote "//rawgithub.com/mkrull/yesod-ember-skel/master/static/js/App.js"
-    addScriptRemote "//rawgithub.com/mkrull/yesod-ember-skel/master/static/js/libs/bs-3.0/bootstrap.min.js"
-    $(widgetFile "home")
+mkYesodDispatch "Ember" resourcesEmber
 
 main :: IO ()
 main = do
