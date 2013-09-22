@@ -1,4 +1,4 @@
-yesod-ember-skel
+BlogHa
 ================
 
-Basic Yesod application prepared to use emberjs
+Yesod based blog engine.

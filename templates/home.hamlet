@@ -1,3 +1,9 @@
+<script type="text/x-handlebars" id="welcome">
+    <div class="jumbotron">
+        <h1>BlogHa</h1>
+        <p>A blog engine powered by Yesod and Ember.js<br>
+        <p><a class="btn btn-primary btn-lg">Get Started
+
 <script type="text/x-handlebars" id="about">
     <div class="about"><p>About</p>
 
@@ -7,7 +13,7 @@
 <script type="text/x-handlebars">
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="collapse navbar-collapse">
-            <a class="navbar-brand" href="#">SomeBlog
+<a class="navbar-brand" href="#/welcome">SomeBlog
             <ul class="nav navbar-nav">
                 <li>
                     {{#link-to 'posts'}}Posts{{/link-to}}
