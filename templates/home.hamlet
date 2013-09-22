@@ -13,7 +13,7 @@
 <script type="text/x-handlebars">
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="collapse navbar-collapse">
-<a class="navbar-brand" href="#/welcome">SomeBlog
+            {{#link-to 'welcome' classNames="navbar-brand"}}SomeBlog{{/link-to}}
             <ul class="nav navbar-nav">
                 <li>
                     {{#link-to 'posts'}}Posts{{/link-to}}
