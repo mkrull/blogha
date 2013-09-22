@@ -1,23 +1,44 @@
 <script type="text/x-handlebars" id="welcome">
     <div class="jumbotron">
-        <h1>BlogHa</h1>
-        <p>A blog engine powered by Yesod and Ember.js<br>
-        <p><a class="btn btn-primary btn-lg">Get Started
+        <h1>BlogHa
+        <p>A blog engine powered by Yesod and Ember.js
+        <p>
+            <a class="btn btn-primary btn-lg">Get Started
 
 <script type="text/x-handlebars" id="about">
-    <div class="about"><p>About</p>
+    <div class="about"><p>About
 
 <script type="text/x-handlebars" id="posts">
-    <div class="about"><p>Posts</p> 
+    <div class="row">
+        <div class="span3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Recent Posts
+                {{#each}}
+                <tr>
+                    <td>
+                {{/each}}
+        <div class="span9 well">
+            <p>Coming Soon ...
 
 <script type="text/x-handlebars">
-    <div class="navbar navbar-inverse navbar-static-top">
-        <div class="collapse navbar-collapse">
-            {{#link-to 'welcome' classNames="navbar-brand"}}SomeBlog{{/link-to}}
-            <ul class="nav navbar-nav">
-                <li>
-                    {{#link-to 'posts'}}Posts{{/link-to}}
-                <li>
-                    {{#link-to 'about'}}About{{/link-to}}
-
-    {{outlet}}
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation
+                    <span class="icon-bar">
+                    <span class="icon-bar">
+                    <span class="icon-bar">
+                {{#link-to 'welcome' classNames="navbar-brand"}}SomeBlog{{/link-to}}
+                
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        {{#link-to 'posts'}}Posts{{/link-to}}
+                    <li>
+                        {{#link-to 'about'}}About{{/link-to}}
+    
+        {{outlet}}
+    

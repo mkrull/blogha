@@ -23,6 +23,7 @@ data Ember = Ember
    , httpManager :: Manager
    }
 
+-- init persist instance
 instance YesodPersist Ember where
    type YesodPersistBackend Ember = SqlPersistT
    runDB f = do
