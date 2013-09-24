@@ -1,0 +1,11 @@
+User json
+    name     Text
+    email    Text
+    deriving Show
+    UniqueName name
+    UniqueEmail email
+Entry json
+    author     UserId
+    title      Text
+    content    Text
+    created_at UTCTime

@@ -22,3 +22,7 @@ modules:
     filename: src/Main.hs
   Handler.Home:
     filename: src/Handler/Home.hs
+  Handler.Posts:
+    filename: src/Handler/Posts.hs
+  Handler.Fixtures:
+    filename: src/Handler/Fixtures.hs

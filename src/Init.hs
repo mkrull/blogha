@@ -1,16 +1,21 @@
 module Init ( module Init, module X ) where
 
-import Yesod as X
-import Yesod.Default.Config
-import Yesod.Default.Util as X
-import Language.Haskell.TH (ExpQ)
+import           Language.Haskell.TH     (ExpQ)
+import           Yesod                   as X
+import           Yesod.Default.Config
+import           Yesod.Default.Util      as X (widgetFileReload)
 
-import Database.Persist.Quasi (lowerCaseSettings)
-import Database.Persist.Sqlite as X
-    ( ConnectionPool, SqlPersistT, runSqlPool, runMigration
-    , createSqlitePool, runSqlPersistMPool
-    )
-import Network.HTTP.Conduit as X (Manager, newManager, def)
+import           Data.Text               as X (Text)
+import           Data.Time               as X (UTCTime, getCurrentTime)
+
+import           Data.Aeson              as X (encode, object, toJSON, (.=))
+import           Database.Persist.Quasi  (lowerCaseSettings)
+import           Database.Persist.Sqlite as X (ConnectionPool, SqlPersistT,
+                                               createSqlitePool, runMigration,
+                                               runSqlPersistMPool, runSqlPool)
+import           Network.HTTP.Conduit    as X (Manager, def, newManager)
+import           System.IO               as X (stdout)
+import           System.Log.FastLogger   as X (Logger, mkLogger)
 
 -- create database related
 share [mkPersist sqlOnlySettings, mkMigrate "migrateAll"] $(persistFileWith lowerCaseSettings "config/models")
@@ -21,6 +26,7 @@ widgetFile = widgetFileReload def
 data Ember = Ember
    { connPool    :: ConnectionPool
    , httpManager :: Manager
+   , emberLogger :: Logger
    }
 
 -- init persist instance
@@ -31,5 +37,8 @@ instance YesodPersist Ember where
        let pool = connPool master
        runSqlPool f pool
 
-instance Yesod Ember
+instance Yesod Ember where
+    makeLogger = return . emberLogger
+
 mkYesodData "Ember" $(parseRoutesFile "config/routes")
+

@@ -10,7 +10,7 @@
 
 <script type="text/x-handlebars" id="posts">
     <div class="row">
-        <div class="span3">
+        <div class="col-md-3">
             <table class="table">
                 <thead>
                     <tr>
@@ -18,8 +18,9 @@
                 {{#each}}
                 <tr>
                     <td>
+                        {{title}} <small class="muted">{{author.name}}
                 {{/each}}
-        <div class="span9 well">
+        <div class="col-md-9">
             <p>Coming Soon ...
 
 <script type="text/x-handlebars">
